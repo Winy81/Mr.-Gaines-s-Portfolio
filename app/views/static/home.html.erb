@@ -1,9 +1,5 @@
 <h1>Static#home</h1>
 
-<% if current_user %>
-  <h1>Hi, <%= current_user.first_name %></h1>
- <% else %>
-  <h1>Hi, Guest</h1>
-<% end %>
+<%= link_to "Blogs", blogs_path %>
 
 <p>Find me in app/views/static/home.html.erb</p>

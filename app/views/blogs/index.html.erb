@@ -7,7 +7,9 @@
     <tr>
       <th>Title</th>
       <th>Subtitle</th>
+      <% if logged_in?(:editor, :site_admin) %>
       <th>Link</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,10 +19,12 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.subtitle %></td>
+        <% if logged_in?(:editor, :site_admin) %>
         <td><%= blog.link %></td>
+        <% end %>
         <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_blog_path(blog) if logged_in?(:site_admin) %></td>
+        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin)%>

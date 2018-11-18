@@ -10,10 +10,14 @@
   <%= @blog.subtitle %>
 </p>
 
+<% if logged_in?(:editor, :site_admin) %>
 <p>
   <strong>Link:</strong>
   <%= @blog.link %>
 </p>
+<% end %>
 
+<% if logged_in?(:editor, :site_admin) %>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
+<% end %>
 <%= link_to 'Back', blogs_path %>
